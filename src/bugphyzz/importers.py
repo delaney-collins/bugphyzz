@@ -230,8 +230,8 @@ def get_taxon_signatures(
 
 def _make_signatures_discrete(dat: pd.DataFrame, tax_id_type: str = "NCBI_ID") -> dict[str, list[str]]:
     dat = dat.copy()
-    # Mirrors the R script exactly, including the original "bugphyz" spelling.
-    dat["Attribute"] = "bugphyz:" + dat["Attribute"].astype(str) + "|" + dat["Attribute_value"].astype(str)
+    # Use the corrected Bugphyzz namespace for discrete signatures.
+    dat["Attribute"] = "bugphyzz:" + dat["Attribute"].astype(str) + "|" + dat["Attribute_value"].astype(str)
     return _split_unique(dat, group_col="Attribute", value_col=tax_id_type)
 
 
